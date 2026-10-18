@@ -1,0 +1,48 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // User accounts created with Google Sign-In
+    match /users/{userId} {
+      allow read, write: if true;
+    }
+
+    // Public directory for Pakhi ID lookups (PK-XXXXXX)
+    match /public_profiles/{pakhiId} {
+      allow read, write: if true;
+    }
+
+    // Direct conversations between users
+    match /chats/{chatId} {
+      allow read, write: if true;
+
+      match /messages/{messageId} {
+        allow read, write: if true;
+      }
+    }
+
+    // Announcements and pinned notices (push/pinned broadcasts)
+    match /announcements/{id} {
+      allow read, write: if true;
+    }
+
+    // Interactive promotional banners
+    match /banners/{id} {
+      allow read, write: if true;
+    }
+
+    // App system config (maintenance mode, emergency broadcast)
+    match /app_config/{id} {
+      allow read, write: if true;
+    }
+
+    // Admin audit logs
+    match /admin_logs/{id} {
+      allow read, write: if true;
+    }
+
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}

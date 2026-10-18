@@ -1,0 +1,6 @@
+{
+  "name": "Pakhi",
+  "description": "পাখি (PAKHI) - আধুনিক, নিরাপদ, রিয়েল-টাইম মেসেজিং অ্যাপ্লিকেশন।",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

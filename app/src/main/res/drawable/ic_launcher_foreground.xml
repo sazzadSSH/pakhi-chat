@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Origami / Geometric Messenger Bird in Flight with Speech Bubble Motif -->
+    <!-- Soft shadow below bird -->
+    <path
+        android:fillColor="#26000000"
+        android:pathData="M38,76 L70,76 L60,82 L34,80 Z" />
+
+    <!-- Main Bird Body & Head (Pure crisp white) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M32,66 L42,66 L56,54 L72,40 L78,38 L72,48 L64,56 L54,72 L38,72 L30,68 Z" />
+
+    <!-- Sharp Beak -->
+    <path
+        android:fillColor="#FBBF24"
+        android:pathData="M78,38 L84,39 L76,43 Z" />
+
+    <!-- Ascending Speech Bubble Wing (White with translucent accent) -->
+    <path
+        android:pathData="M52,52 L62,28 C64,24 72,25 71,32 L66,42 L52,52 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="52"
+                android:startY="52"
+                android:endX="70"
+                android:endY="26"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#E0F2FE" />
+                <item android:offset="1.0" android:color="#FFFFFF" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Lower Fold Wing / Message Tail -->
+    <path
+        android:fillColor="#BAE6FD"
+        android:pathData="M44,58 L32,46 L48,48 L56,54 Z" />
+
+    <!-- Eye / Message Dot -->
+    <path
+        android:fillColor="#0284C7"
+        android:pathData="M70,41m-1.8,0a1.8,1.8 0 1,0 3.6,0a1.8,1.8 0 1,0 -3.6,0" />
+
+    <!-- Speed / Message Trails -->
+    <path
+        android:fillColor="#80FFFFFF"
+        android:pathData="M26,58 L34,58 L32,60 L24,60 Z" />
+    <path
+        android:fillColor="#60FFFFFF"
+        android:pathData="M28,64 L36,64 L34,66 L26,66 Z" />
+</vector>

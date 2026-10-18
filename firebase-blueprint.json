@@ -1,0 +1,116 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Private user account profile",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "pakhiId": { "type": "string" },
+        "displayName": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "photoUrl": { "type": "string" },
+        "status": { "type": "string" },
+        "isOnline": { "type": "boolean" },
+        "lastSeen": { "type": "string", "format": "date-time" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "pakhiId", "displayName", "email", "status", "createdAt"]
+    },
+    "PublicProfile": {
+      "title": "PublicProfile",
+      "description": "Public searchable user profile without email address",
+      "type": "object",
+      "properties": {
+        "pakhiId": { "type": "string" },
+        "uid": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoUrl": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["pakhiId", "uid", "displayName", "createdAt"]
+    },
+    "Chat": {
+      "title": "Chat",
+      "description": "Direct chat conversation between two users",
+      "type": "object",
+      "properties": {
+        "chatId": { "type": "string" },
+        "type": { "type": "string" },
+        "members": { "type": "array" },
+        "lastMessageText": { "type": "string" },
+        "lastMessageSenderId": { "type": "string" },
+        "lastMessageAt": { "type": "string", "format": "date-time" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["chatId", "members", "createdAt"]
+    },
+    "Message": {
+      "title": "Message",
+      "description": "Message item in a chat conversation",
+      "type": "object",
+      "properties": {
+        "messageId": { "type": "string" },
+        "chatId": { "type": "string" },
+        "senderId": { "type": "string" },
+        "recipientId": { "type": "string" },
+        "text": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["messageId", "chatId", "senderId", "recipientId", "text", "status", "createdAt"]
+    },
+    "Announcement": {
+      "title": "Announcement",
+      "description": "Admin broadcast announcement",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "body": { "type": "string" },
+        "pinned": { "type": "boolean" },
+        "published": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "title", "body", "createdAt"]
+    },
+    "AppConfig": {
+      "title": "AppConfig",
+      "description": "Global application configuration",
+      "type": "object",
+      "properties": {
+        "appName": { "type": "string" },
+        "maintenanceEnabled": { "type": "boolean" },
+        "maintenanceMessage": { "type": "string" }
+      },
+      "required": ["appName"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "Private user profiles"
+    },
+    "/public_profiles/{pakhiId}": {
+      "schema": { "$ref": "#/entities/PublicProfile" },
+      "description": "Public user lookup without private email"
+    },
+    "/chats/{chatId}": {
+      "schema": { "$ref": "#/entities/Chat" },
+      "description": "1-on-1 chat channels"
+    },
+    "/chats/{chatId}/messages/{messageId}": {
+      "schema": { "$ref": "#/entities/Message" },
+      "description": "Messages inside a chat"
+    },
+    "/announcements/{id}": {
+      "schema": { "$ref": "#/entities/Announcement" },
+      "description": "Announcements"
+    },
+    "/app_config/{id}": {
+      "schema": { "$ref": "#/entities/AppConfig" },
+      "description": "System config"
+    }
+  }
+}
